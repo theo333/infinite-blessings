@@ -1,6 +1,6 @@
 const express = require('express');
 const app = express();
-const db = require('./db');
+const db = require('./server/db');
 const { Blessing, Question, Stat } = db.models;
 
 module.exports = app;
