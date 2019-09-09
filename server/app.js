@@ -1,11 +1,12 @@
 const express = require('express');
 const app = express();
-const db = require('./server/db');
+const db = require('./db');
 const { Blessing, Question, Stat } = db.models;
 
 module.exports = app;
 
 app.use(express.json());
+console.log('getting to app')
 
 // BLESSINGS ROUTES
 app.get('/api/blessings', (req, res, next) => {
