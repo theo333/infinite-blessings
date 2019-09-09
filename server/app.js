@@ -6,7 +6,7 @@ const { Blessing, Question, Stat } = db.models;
 module.exports = app;
 
 app.use(express.json());
-console.log('getting to app')
+console.log('getting to app');
 
 // BLESSINGS ROUTES
 app.get('/api/blessings', (req, res, next) => {
