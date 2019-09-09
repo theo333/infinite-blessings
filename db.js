@@ -42,18 +42,21 @@ const syncAndSeed = async () => {
   console.log('joe', joe.get());
 
   return {
-    syncAndSeed,
-    models: {
-      blessings: {
-        joe,
-        susan,
-        lisa,
-        charlie
-      }
+    blessings: {
+      joe,
+      susan,
+      lisa,
+      charlie
     }
   }
 };
 
-syncAndSeed();
+module.exports = {
+  syncAndSeed,
+  models: {
+    Blessing
+  }
+};
+
 
 
