@@ -24,9 +24,19 @@ app.post('/api/blessings', (req, res, next) => {
   Blessing.create({
     name: req.body.name,
     comment: req.body.comment,
-    blessingsNum: randNum,
+    blessingNum: randNum,
   })
     .then(blessing => res.send(blessing))
+    .catch(next);
+});
+
+app.get('/api/blessings/latest', (req, res, next) => {
+  Blessing.findAll()
+    .then(blessings => {
+      const last = blessings.length - 1;
+      console.log('backend ready to send:', blessings[last].get());
+      res.send(blessings[last]);
+    })
     .catch(next);
 });
 

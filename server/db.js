@@ -22,7 +22,7 @@ const Blessing = conn.define('blessing', {
   comment: {
     type: STRING,
   },
-  blessingsNum: {
+  blessingNum: {
     type: INTEGER,
   },
 });
@@ -54,45 +54,45 @@ const Stat = conn.define('stat', {
 const mapSeed = (data, model) => Promise.all(data.map(item => model.create(item)));
 
 const syncAndSeed = async () => {
-  await conn.sync({ force: true });
+  await conn.sync({ force: false });
 
-  const blessings = [
-    { name: 'Joe', blessingsNum: 5 },
-    { name: 'Susan', blessingsNum: 20 },
-    { name: 'Lisa', blessingsNum: 50 },
-    { name: 'Charlie', blessingsNum: 100 },
-  ];
+  // const blessings = [
+  //   { name: 'Joe', blessingNum: 5 },
+  //   { name: 'Susan', blessingNum: 20 },
+  //   { name: 'Lisa', blessingNum: 50 },
+  //   { name: 'Charlie', blessingNum: 100 },
+  // ];
 
-  // const [joe, susan, lisa, charlie] = await Promise.all(blessings.map(blessing => Blessing.create(blessing)));
-  const [joe, susan, lisa, charlie] = await mapSeed(blessings, Blessing);
+  // // const [joe, susan, lisa, charlie] = await Promise.all(blessings.map(blessing => Blessing.create(blessing)));
+  // const [joe, susan, lisa, charlie] = await mapSeed(blessings, Blessing);
 
-  // console.log('joe', susan.get());
+  // // console.log('joe', susan.get());
 
-  const questions = [
-    { name: 'Question 1' },
-    { name: 'Question 2' },
-    { name: 'Question 3' },
-    { name: 'Question 4' },
-  ];
+  // const questions = [
+  //   { name: 'Question 1' },
+  //   { name: 'Question 2' },
+  //   { name: 'Question 3' },
+  //   { name: 'Question 4' },
+  // ];
 
-  const [question1, question2, question3, question4] = await mapSeed(questions, Question);
+  // const [question1, question2, question3, question4] = await mapSeed(questions, Question);
 
-  // console.log('question1', question1.get());
+  // // console.log('question1', question1.get());
 
-  return {
-    blessings: {
-      joe,
-      susan,
-      lisa,
-      charlie,
-    },
-    questions: {
-      question1,
-      question2,
-      question3,
-      question4,
-    },
-  };
+  // return {
+  //   blessings: {
+  //     joe,
+  //     susan,
+  //     lisa,
+  //     charlie,
+  //   },
+  //   questions: {
+  //     question1,
+  //     question2,
+  //     question3,
+  //     question4,
+  //   },
+  // };
 };
 
 module.exports = {
