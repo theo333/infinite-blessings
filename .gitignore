@@ -1,2 +1,5 @@
-.DS_store
-_files
+node_modules
+.DS_Store
+.vscode/
+_files/
+package-lock.js

@@ -1,20 +1,25 @@
 {
-  "name": "infinite-blessings",
-  "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/theo333/infinite-blessings.git"
-  },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/theo333/infinite-blessings/issues"
-  },
-  "homepage": "https://github.com/theo333/infinite-blessings#readme"
+	"name": "infinite-blessings",
+	"version": "1.0.0",
+	"description": "",
+	"main": "index.js",
+	"scripts": {
+		"test": "echo \"Error: no test specified\" && exit 1",
+		"start:dev": "nodemon db.js"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/theo333/infinite-blessings.git"
+	},
+	"keywords": [],
+	"author": "",
+	"license": "ISC",
+	"bugs": {
+		"url": "https://github.com/theo333/infinite-blessings/issues"
+	},
+	"homepage": "https://github.com/theo333/infinite-blessings#readme",
+	"dependencies": {
+		"pg": "^7.12.1",
+		"sequelize": "^5.18.4"
+	}
 }
