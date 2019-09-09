@@ -5,10 +5,11 @@
   "main": "db.js",
   "dependencies": {
     "express": "^4.16.4",
-    "pg": "^7.10.0",
     "morgan": "^1.9.1",
+    "pg": "^7.10.0",
     "react": "^16.8.3",
-    "react-dom": "^16.8.3"
+    "react-dom": "^16.8.3",
+    "react-router-dom": "^5.0.0"
   },
   "babel": {
     "presets": [
