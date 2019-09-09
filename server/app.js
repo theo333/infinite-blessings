@@ -19,15 +19,30 @@ app.get('/api/blessings', (req, res, next) => {
     .catch(next);
 });
 
-app.post('/api/blessings', (req, res, next) => {
-  const randNum = randNumGenerator();
-  Blessing.create({
-    name: req.body.name,
-    comment: req.body.comment,
-    blessingNum: randNum,
-  })
-    .then(blessing => res.send(blessing))
-    .catch(next);
+app.post('/api/blessings', async (req, res, next) => {
+  try {
+    const newBlessingNum = randNumGenerator();
+
+    // create new blessing
+    const blessing = await Blessing.create({
+      name: req.body.name,
+      comment: req.body.comment,
+      blessingNum: newBlessingNum,
+    });
+
+    // add new blessing to total stats
+    const stats = await Stat.findAll();
+    const lastStat = stats[stats.length - 1];
+    const { blessingsTotal, blessingsQty } = lastStat;
+    await Stat.create({
+      blessingsTotal: blessingsTotal + newBlessingNum,
+      blessingsQty: blessingsQty + 1,
+    });
+
+    res.send(blessing);
+  } catch (err) {
+    throw new Error(err);
+  }
 });
 
 app.get('/api/blessings/latest', (req, res, next) => {
@@ -54,8 +69,8 @@ app.get('/api/stats', (req, res, next) => {
     .catch(next);
 });
 
-app.post('/api/stats', (req, res, next) => {
-  Stat.create(req.body)
-    .then(stat => res.send(stat))
-    .catch(next);
-});
+// app.post('/api/stats', (req, res, next) => {
+//   Stat.create(req.body)
+//     .then(stat => res.send(stat))
+//     .catch(next);
+// });

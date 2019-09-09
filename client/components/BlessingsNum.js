@@ -1,4 +1,4 @@
-import React, { useState, useEffect, Component } from 'react';
+import React, { Component } from 'react';
 import axios from 'axios';
 
 export default class BlessingsNum extends Component {
@@ -36,7 +36,7 @@ export default class BlessingsNum extends Component {
   render() {
     return (
       <p>
-        CONGRATULATIOS! <br />
+        CONGRATULATIONS! <br />
         YOU RECEIVED <br />
         {this.state.blessingNum} <br />
         BLESSINGS
@@ -44,26 +44,3 @@ export default class BlessingsNum extends Component {
     );
   }
 }
-
-// export default () => {
-//   const [blessingNum, setBlessingNum] = useState('');
-
-//   useEffect(() => {
-//     getLatestBlessingNum();
-//   });
-
-//   const getLatestBlessingNum = () => {
-//     axios
-//       .get('/api/blessings/latest')
-//       .then(resp => resp.data)
-//       .then(blessing => {
-//         console.log('received blessing: ', blessing);
-//         setBlessingNum(blessing);
-//       })
-//       .catch(err => console.log(err));
-//   };
-
-//   return (
-//     <p>blessings num page</p>
-//   )
-// };

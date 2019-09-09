@@ -41,13 +41,16 @@ const Question = conn.define('question', {
 const Stat = conn.define('stat', {
   id: {
     type: UUID,
+    defaultValue: UUIDV4,
     primaryKey: true,
   },
   blessingsTotal: {
     type: INTEGER,
+    defaultValue: 0,
   },
   blessingsQty: {
     type: INTEGER,
+    defaultValue: 0,
   },
 });
 
