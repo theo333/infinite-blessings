@@ -25,7 +25,18 @@ const Blessing = conn.define('blessing', {
   }
 });
 
-const Stats = conn.define('stats', {
+const Question = conn.define('question', {
+  id: {
+    type: UUID,
+    defaultValue: UUIDV4,
+    primaryKey: true
+  },
+  name: {
+    type: STRING
+  }
+});
+
+const Stat = conn.define('stat', {
   id: {
     type: UUID,
     primaryKey: true
@@ -35,17 +46,6 @@ const Stats = conn.define('stats', {
   },
   blessingsQty: {
     type: INTEGER
-  }
-});
-
-const Question = conn.define('question', {
-  id: {
-    type: UUID,
-    defaultValue: UUIDV4,
-    primaryKey: true
-  },
-  name: {
-    type: STRING
   }
 });
 
@@ -97,7 +97,8 @@ module.exports = {
   syncAndSeed,
   models: {
     Blessing,
-    Question
+    Question,
+    Stat
   }
 };
 
