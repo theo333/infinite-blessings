@@ -1,7 +1,9 @@
 const Sequelize = require('sequelize');
 const { UUID, UUIDV4, STRING, INTEGER } = Sequelize;
 
-const conn = new Sequelize(process.env.DATABASE_URL || 'postgres://localhost/infinite_blessings');
+const conn = new Sequelize(process.env.DATABASE_URL || 'postgres://localhost/infinite_blessings',
+  { logging: false }
+);
 
 const Blessing = conn.define('blessing', {
   id: {
@@ -64,7 +66,7 @@ const syncAndSeed = async () => {
   // const [joe, susan, lisa, charlie] = await Promise.all(blessings.map(blessing => Blessing.create(blessing)));
   const [joe, susan, lisa, charlie] = await mapSeed(blessings, Blessing);
 
-  console.log('joe', susan.get());
+  // console.log('joe', susan.get());
 
   const questions = [
     { name: 'Question 1' },
@@ -75,7 +77,7 @@ const syncAndSeed = async () => {
 
   const [question1, question2, question3, question4] = await mapSeed(questions, Question);
 
-  console.log('question1', question1.get());
+  // console.log('question1', question1.get());
 
   return {
     blessings: {

@@ -7,6 +7,11 @@ module.exports = app;
 
 app.use(express.json());
 
+// blessings random number generator
+const randNumGenerator = () => {
+  return Math.floor(Math.random() * 1000000);
+};
+
 // BLESSINGS ROUTES
 app.get('/api/blessings', (req, res, next) => {
   Blessing.findAll()
@@ -15,7 +20,12 @@ app.get('/api/blessings', (req, res, next) => {
 });
 
 app.post('/api/blessings', (req, res, next) => {
-  Blessing.create(req.body)
+  const randNum = randNumGenerator();
+  Blessing.create({
+    name: req.body.name,
+    comment: req.body.comment,
+    blessingsNum: randNum,
+  })
     .then(blessing => res.send(blessing))
     .catch(next);
 });
