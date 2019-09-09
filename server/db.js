@@ -1,9 +1,9 @@
 const Sequelize = require('sequelize');
 const { UUID, UUIDV4, STRING, INTEGER } = Sequelize;
 
-const conn = new Sequelize(process.env.DATABASE_URL || 'postgres://localhost/infinite_blessings',
-  { logging: false }
-);
+const conn = new Sequelize(process.env.DATABASE_URL || 'postgres://localhost/infinite_blessings', {
+  logging: false,
+});
 
 const Blessing = conn.define('blessing', {
   id: {

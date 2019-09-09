@@ -16,7 +16,7 @@ export default () => {
       name,
       comment,
     };
-    console.log('blessing ', blessing)
+    console.log('blessing ', blessing);
 
     ev.preventDefault();
     axios
@@ -49,11 +49,7 @@ export default () => {
             onChange={e => setComment(e.target.value)}
           />
         </div>
-        <button
-          type="submit"
-        >
-          Submit
-        </button>
+        <button type="submit">Submit</button>
       </form>
     </div>
   );
