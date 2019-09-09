@@ -7,7 +7,7 @@ const Blessing = conn.define('blessing', {
   id: {
     type: UUID,
     defaultValue: UUIDV4,
-    primaryKey: true
+    primaryKey: true,
   },
   name: {
     type: STRING,
@@ -15,50 +15,50 @@ const Blessing = conn.define('blessing', {
     validate: {
       notEmpty: true,
       // char limit 15 char
-    }
+    },
   },
   comment: {
-    type: STRING
+    type: STRING,
   },
   blessingsNum: {
-    type: INTEGER
-  }
+    type: INTEGER,
+  },
 });
 
 const Question = conn.define('question', {
   id: {
     type: UUID,
     defaultValue: UUIDV4,
-    primaryKey: true
+    primaryKey: true,
   },
   name: {
-    type: STRING
-  }
+    type: STRING,
+  },
 });
 
 const Stat = conn.define('stat', {
   id: {
     type: UUID,
-    primaryKey: true
+    primaryKey: true,
   },
   blessingsTotal: {
     type: INTEGER,
   },
   blessingsQty: {
-    type: INTEGER
-  }
+    type: INTEGER,
+  },
 });
 
 const mapSeed = (data, model) => Promise.all(data.map(item => model.create(item)));
 
 const syncAndSeed = async () => {
-  await conn.sync({ force: true })
+  await conn.sync({ force: true });
 
   const blessings = [
     { name: 'Joe', blessingsNum: 5 },
     { name: 'Susan', blessingsNum: 20 },
     { name: 'Lisa', blessingsNum: 50 },
-    { name: 'Charlie', blessingsNum: 100 }
+    { name: 'Charlie', blessingsNum: 100 },
   ];
 
   // const [joe, susan, lisa, charlie] = await Promise.all(blessings.map(blessing => Blessing.create(blessing)));
@@ -82,14 +82,14 @@ const syncAndSeed = async () => {
       joe,
       susan,
       lisa,
-      charlie
+      charlie,
     },
     questions: {
       question1,
       question2,
       question3,
-      question4
-    }
+      question4,
+    },
   };
 };
 
@@ -98,9 +98,6 @@ module.exports = {
   models: {
     Blessing,
     Question,
-    Stat
-  }
+    Stat,
+  },
 };
-
-
-
