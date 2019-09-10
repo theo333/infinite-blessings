@@ -16,26 +16,10 @@ export default class Stats extends Component {
   }
 
   componentDidMount() {
-    // this.getStats();
     this.getBlessings();
   }
 
-  getStats = () => {
-    return axios
-      .get('/api/stats')
-      .then(resp => resp.data)
-      .then(stats => {
-        const blessingsTotal = stats[stats.length - 1].blessingsTotal;
-        const blessingsQty = stats[stats.length - 1].blessingsQty;
-        this.setState({
-          blessingsTotal,
-          blessingsQty,
-        });
-        // }
-      })
-      .catch(err => console.log(err));
-  };
-
+  // TODO refactor - change to async
   getBlessings() {
     return axios
       .get('/api/blessings')
@@ -69,6 +53,12 @@ export default class Stats extends Component {
           blessingsLatest: blessingsLatest(10),
         });
       })
+      .then(() => {
+        // go to home page after 60 seconds
+        // setTimeout(() => {
+        //   this.props.history.push('/');
+        // }, 60000);
+      })
       .catch(err => console.log(err));
   }
 
@@ -80,15 +70,13 @@ export default class Stats extends Component {
         <div className="row justify-content-center">
           <div className="col-md-6 text-center">
             <button type="button" onClick={() => this.props.history.push('/')}>
-              Begin
+              BEGIN
             </button>
             <div>
               <h2>Highest Blessings</h2>
-              <p>
+              <p className="h4">
                 {name} {blessingNum ? blessingNum.toLocaleString() : ''}
               </p>
-              <p>Total Given {blessingsTotal ? blessingsTotal.toLocaleString() : ''}</p>
-              <p></p>
             </div>
             <div>
               <h2>Latest Blessings</h2>
@@ -107,6 +95,10 @@ export default class Stats extends Component {
                     : ''}
                 </tbody>
               </table>
+            </div>
+            <div>
+              <h2>Total Given</h2>
+              <p className="h4">{blessingsTotal ? blessingsTotal.toLocaleString() : ''}</p>
             </div>
           </div>
         </div>

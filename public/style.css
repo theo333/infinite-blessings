@@ -21,14 +21,15 @@
 }
 
 #click-continue {
-  margin-top: 15rem;
+  margin-top: 12rem;
 }
 
 #click-continue a {
-  color: #fcaf00;
-  font-weight: 200;
+  color: #e5b530; /* #fcaf00 */
+  font-size: 2rem;
+  font-weight: 400;
   letter-spacing: 0.2rem;
-  text-shadow: 1px 1px 5px white;
+  /* text-shadow: 1px 1px 5px white; */
 }
 
 /********* SUBMIT BLESSINGS PAGE *********/
@@ -69,4 +70,25 @@ label[for='comment'] {
 
 .form-control::placeholder {
   color: #fff;
+}
+
+/********* BLESSINGS PAGE *********/
+#blessing-page {
+  color: blue;
+  font-weight: 600;
+  letter-spacing: 0.2rem;
+}
+
+.bless-congrats {
+  font-size: 2.7rem;
+}
+
+.bless-num {
+  font-size: 10rem;
+  color: #e86321;
+  text-shadow: 10px 0px 2px yellow;
+}
+
+.bless-blessings {
+  font-size: 4rem;
 }

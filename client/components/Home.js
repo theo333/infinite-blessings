@@ -10,7 +10,7 @@ export default () => {
             <p id="bless-you">BLESS YOU !</p>
             <h1>INFINITE BLESSINGS GENERATOR</h1>
             <div id="click-continue">
-              <Link className="text-center h3" to="form">
+              <Link className="text-center" to="form">
                 CLICK HERE TO CONTINUE
               </Link>
             </div>
