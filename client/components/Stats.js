@@ -59,7 +59,8 @@ export default class Stats extends Component {
           blessingHighest: blessingHighest(),
           blessingsLatest: blessingsLatest(10),
         });
-      });
+      })
+      .catch(err => console.log(err));
   }
 
   render() {

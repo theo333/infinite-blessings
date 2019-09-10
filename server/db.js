@@ -16,7 +16,7 @@ const Blessing = conn.define('blessing', {
     allowNull: false,
     validate: {
       notEmpty: true,
-      // char limit 15 char
+      len: [0, 15],
     },
   },
   comment: {
