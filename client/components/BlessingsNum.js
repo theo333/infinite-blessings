@@ -5,40 +5,40 @@ export default class BlessingsNum extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      blessingNum: '',
+      latestBlessing: {},
     };
-    this.getLatestBlessingNum = this.getLatestBlessingNum.bind(this);
   }
 
   componentDidMount() {
-    this.getLatestBlessingNum();
+    this.getLatestBlessing();
   }
 
-  getLatestBlessingNum = () => {
+  getLatestBlessing() {
     axios
       .get('/api/blessings/latest')
       .then(resp => resp.data)
-      .then(blessing => {
-        console.log('received blessingNum: ', blessing.blessingNum);
-
-        this.setState({ blessingNum: blessing.blessingNum }, () =>
-          console.log('blessingNum updated to: ', this.state.blessingNum),
+      .then(latestBlessing => {
+        this.setState(
+          { latestBlessing },
+          // () => console.log('blessingNum updated to: ', this.state.latestBlessing),
         );
       })
       .then(() => {
         setTimeout(() => {
           this.props.history.push('/stats');
-        }, 4000);
+        }, 6000);
       })
       .catch(err => console.log(err));
-  };
+  }
 
   render() {
+    const { name, blessingNum } = this.state.latestBlessing;
     return (
       <p>
-        CONGRATULATIONS! <br />
+        CONGRATULATIONS {name}!!!
+        <br />
         YOU RECEIVED <br />
-        {this.state.blessingNum} <br />
+        {blessingNum ? blessingNum.toLocaleString() : ''} <br />
         BLESSINGS
       </p>
     );

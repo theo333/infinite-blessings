@@ -3,13 +3,15 @@ import { Link } from 'react-router-dom';
 
 export default () => {
   return (
-    <Fragment>
+    <div className="text-center">
       <h1>
         BLESS YOU!
         <br />
         <span>Infinite Blessings Generator</span>
       </h1>
-      <Link to="form">Click Here to Continue</Link>
-    </Fragment>
+      <Link className="text-center" to="form">
+        Click Here to Continue
+      </Link>
+    </div>
   );
 };

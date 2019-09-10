@@ -31,25 +31,37 @@ export default props => {
   // };
 
   return (
-    <div id="blessings-form">
-      <form onSubmit={handleSubmit}>
-        <div className="row">
-          <label htmlFor="name">Name</label>
-          <input name="name" value={name} onChange={e => setName(e.target.value)} />
+    <div className="container">
+      <div className="row justify-content-center">
+        <div id="blessings-form" className="col-md-8">
+          <p>Leave a comment and write your name to receive blessings</p>
+          <form onSubmit={handleSubmit}>
+            <div className="form-group">
+              <label htmlFor="name">Name</label>
+              <input
+                name="name"
+                value={name}
+                className="form-control"
+                onChange={e => setName(e.target.value)}
+              />
+            </div>
+            <div className="form-group">
+              <label htmlFor="name">Comment</label>
+              <textarea
+                className="form-control"
+                rows="6"
+                name="comment"
+                value={comment}
+                placeholder="question goes here"
+                onChange={e => setComment(e.target.value)}
+              />
+            </div>
+            <button type="submit" className="btn btn-primary">
+              Submit
+            </button>
+          </form>
         </div>
-        <div className="row">
-          <label htmlFor="name">Comment</label>
-          <textarea
-            className="form-control"
-            rows="6"
-            name="comment"
-            value={comment}
-            placeholder="test"
-            onChange={e => setComment(e.target.value)}
-          />
-        </div>
-        <button type="submit">Submit</button>
-      </form>
+      </div>
     </div>
   );
 };

@@ -1,18 +1,18 @@
 /* eslint-disable indent */
 /* eslint-disable react/no-array-index-key */
-import React, { Component, Fragment } from 'react';
+import React, { Component } from 'react';
+import Link from 'react-router-dom';
 import axios from 'axios';
 
 export default class Stats extends Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {
       blessingHighest: '',
       blessingsTotal: 0,
       blessingsQty: 0,
       blessingsLatest: [],
     };
-    this.getBlessings = this.getBlessings.bind(this);
   }
 
   componentDidMount() {
@@ -25,17 +25,12 @@ export default class Stats extends Component {
       .get('/api/stats')
       .then(resp => resp.data)
       .then(stats => {
-        console.log('stats: ', stats);
+        // console.log('stats: ', stats);
         const { blessingsTotal, blessingsQty } = stats[stats.length - 1];
-        this.setState(
-          {
-            // blessingHighest,
-            blessingsTotal,
-            blessingsQty,
-            // blessingsLatest,
-          },
-          () => console.log(this.state),
-        );
+        this.setState({
+          blessingsTotal,
+          blessingsQty,
+        });
       })
       .catch(err => console.log(err));
   };
@@ -60,13 +55,10 @@ export default class Stats extends Component {
         const blessingsLatest = num => {
           return blessings.slice(-num).reverse();
         };
-        this.setState(
-          {
-            blessingHighest: blessingHighest(),
-            blessingsLatest: blessingsLatest(5),
-          },
-          () => console.log('state2: ', this.state),
-        );
+        this.setState({
+          blessingHighest: blessingHighest(),
+          blessingsLatest: blessingsLatest(10),
+        });
       });
   }
 
@@ -74,25 +66,29 @@ export default class Stats extends Component {
     const { blessingHighest, blessingsTotal, blessingsQty, blessingsLatest } = this.state;
     const { name, blessingNum } = blessingHighest;
     return (
-      <div>
+      <div className="">
+        <button type="button" onClick={() => this.props.history.push('/')}>
+          Begin
+        </button>
         <div>
           <h2>Highest Blessings</h2>
           <p>
-            {name} {blessingNum}
+            {name} {blessingNum ? blessingNum.toLocaleString() : ''}
           </p>
-          <p>Total Given {blessingsTotal}</p>
+          <p>Total Given {blessingsTotal ? blessingsTotal.toLocaleString() : ''}</p>
           <p></p>
         </div>
         <div>
           <h2>Latest Blessings</h2>
-          <table>
+          <table className="table table-striped">
             <tbody>
               {blessingsLatest
                 ? blessingsLatest.map((blessing, index) => {
+                    const { name, blessingNum } = blessing;
                     return (
                       <tr key={index}>
-                        <td>{blessing.name}</td>
-                        <td>{blessing.blessingNum}</td>
+                        <td>{name}</td>
+                        <td>{blessingNum ? blessingNum.toLocaleString() : ''}</td>
                       </tr>
                     );
                   })
