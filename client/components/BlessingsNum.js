@@ -27,8 +27,8 @@ export default class BlessingsNum extends Component {
       })
       .then(() => {
         setTimeout(() => {
-          this.props.history.push('/');
-        }, 2000);
+          this.props.history.push('/stats');
+        }, 4000);
       })
       .catch(err => console.log(err));
   };
