@@ -96,14 +96,14 @@ export default class Stats extends Component {
                 <tbody>
                   {blessingsLatest
                     ? blessingsLatest.map((blessing, index) => {
-                      const { name, blessingNum } = blessing;
-                      return (
-                        <tr key={index}>
-                          <td>{name}</td>
-                          <td>{blessingNum ? blessingNum.toLocaleString() : ''}</td>
-                        </tr>
-                      );
-                    })
+                        const { name, blessingNum } = blessing;
+                        return (
+                          <tr key={index}>
+                            <td>{name}</td>
+                            <td>{blessingNum ? blessingNum.toLocaleString() : ''}</td>
+                          </tr>
+                        );
+                      })
                     : ''}
                 </tbody>
               </table>

@@ -50,6 +50,7 @@ export default props => {
               <textarea
                 className="form-control"
                 rows="4"
+                type="text"
                 name="comment"
                 value={comment}
                 placeholder="question goes here"

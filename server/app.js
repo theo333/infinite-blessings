@@ -6,6 +6,7 @@ const { Blessing, Question, Stat } = db.models;
 module.exports = app;
 
 app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 
 // blessings random number generator
 const randNumGenerator = () => {
@@ -34,13 +35,13 @@ app.post('/api/blessings', async (req, res, next) => {
     // get qty from blessings.length
     // get total from summing blessing.blessingNum
     // add new blessing to total stats
-    const stats = await Stat.findAll();
-    const lastStat = stats[stats.length - 1];
-    const { blessingsTotal, blessingsQty } = lastStat;
-    await Stat.create({
-      blessingsTotal: blessingsTotal + newBlessingNum,
-      blessingsQty: blessingsQty + 1,
-    });
+    // const stats = await Stat.findAll();
+    // const lastStat = stats[stats.length - 1];
+    // const { blessingsTotal, blessingsQty } = lastStat;
+    // await Stat.create({
+    //   blessingsTotal: blessingsTotal + newBlessingNum,
+    //   blessingsQty: blessingsQty + 1,
+    // });
 
     res.send(blessing);
   } catch (err) {

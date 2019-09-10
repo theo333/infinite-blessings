@@ -7,6 +7,9 @@ const db = require('./db');
 const PORT = process.env.PORT || 3000;
 
 app.use(morgan('dev'));
+
+// *** look at this for solution  https://github.com/fullstackreact/food-lookup-demo/issues/49
+
 app.get('/app.js', (req, res, next) => {
   res.sendFile(path.join(__dirname, '../public', 'main.js'));
 });
