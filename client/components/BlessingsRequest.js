@@ -4,12 +4,22 @@ import axios from 'axios';
 export default props => {
   const [name, setName] = useState('');
   const [comment, setComment] = useState('');
+  const [question, setQuestion] = useState('');
 
-  // only for testing form
+  const getRandomQuestion = () => {
+    return axios
+      .get('/api/question')
+      .then(resp => resp.data)
+      .then(question => setQuestion(question.name))
+      .catch(err => console.log(err));
+  };
+
   useEffect(() => {
+    // only for testing form
     // console.log('name: ', name);
     // console.log('comment: ', comment);
-  });
+    getRandomQuestion();
+  }, [question]);
 
   const handleSubmit = ev => {
     ev.preventDefault();
@@ -25,10 +35,6 @@ export default props => {
         console.log(err);
       });
   };
-
-  // const getQuestions = () => {
-
-  // };
 
   return (
     <div className="container">
@@ -53,7 +59,7 @@ export default props => {
                 type="text"
                 name="comment"
                 value={comment}
-                placeholder="question goes here"
+                placeholder={question}
                 onChange={e => setComment(e.target.value)}
               />
             </div>

@@ -9,8 +9,8 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 // blessings random number generator
-const randNumGenerator = () => {
-  return Math.floor(Math.random() * 1000000);
+const randNumGenerator = maxNum => {
+  return Math.floor(Math.random() * maxNum);
 };
 
 // BLESSINGS ROUTES
@@ -22,7 +22,7 @@ app.get('/api/blessings', (req, res, next) => {
 
 app.post('/api/blessings', async (req, res, next) => {
   try {
-    const newBlessingNum = randNumGenerator();
+    const newBlessingNum = randNumGenerator(1000000);
 
     // create new blessing
     const blessing = await Blessing.create({
@@ -30,18 +30,6 @@ app.post('/api/blessings', async (req, res, next) => {
       comment: req.body.comment,
       blessingNum: newBlessingNum,
     });
-
-    // TO DO: change this so calc these based on Blessing.findAll
-    // get qty from blessings.length
-    // get total from summing blessing.blessingNum
-    // add new blessing to total stats
-    // const stats = await Stat.findAll();
-    // const lastStat = stats[stats.length - 1];
-    // const { blessingsTotal, blessingsQty } = lastStat;
-    // await Stat.create({
-    //   blessingsTotal: blessingsTotal + newBlessingNum,
-    //   blessingsQty: blessingsQty + 1,
-    // });
 
     res.send(blessing);
   } catch (err) {
@@ -60,9 +48,13 @@ app.get('/api/blessings/latest', (req, res, next) => {
 });
 
 // QUESTIONS ROUTES
-app.get('/api/questions', (req, res, next) => {
+app.get('/api/question', (req, res, next) => {
   Question.findAll()
-    .then(questions => res.send(questions))
+    .then(questions => {
+      const maxNumIndex = questions.length - 1;
+      const randQuestion = questions[randNumGenerator(maxNumIndex)];
+      res.send(randQuestion);
+    })
     .catch(next);
 });
 
