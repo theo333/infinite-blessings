@@ -30,6 +30,9 @@ app.post('/api/blessings', async (req, res, next) => {
       blessingNum: newBlessingNum,
     });
 
+    // TO DO: change this so calc these based on Blessing.findAll
+    // get qty from blessings.length
+    // get total from summing blessing.blessingNum
     // add new blessing to total stats
     const stats = await Stat.findAll();
     const lastStat = stats[stats.length - 1];
@@ -41,7 +44,7 @@ app.post('/api/blessings', async (req, res, next) => {
 
     res.send(blessing);
   } catch (err) {
-    throw new Error(err);
+    next(err);
   }
 });
 

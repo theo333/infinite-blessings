@@ -25,12 +25,13 @@ export default class Stats extends Component {
       .get('/api/stats')
       .then(resp => resp.data)
       .then(stats => {
-        // console.log('stats: ', stats);
-        const { blessingsTotal, blessingsQty } = stats[stats.length - 1];
+        const blessingsTotal = stats[stats.length - 1].blessingsTotal;
+        const blessingsQty = stats[stats.length - 1].blessingsQty;
         this.setState({
           blessingsTotal,
           blessingsQty,
         });
+        // }
       })
       .catch(err => console.log(err));
   };
@@ -67,35 +68,39 @@ export default class Stats extends Component {
     const { blessingHighest, blessingsTotal, blessingsQty, blessingsLatest } = this.state;
     const { name, blessingNum } = blessingHighest;
     return (
-      <div className="">
-        <button type="button" onClick={() => this.props.history.push('/')}>
-          Begin
-        </button>
-        <div>
-          <h2>Highest Blessings</h2>
-          <p>
-            {name} {blessingNum ? blessingNum.toLocaleString() : ''}
-          </p>
-          <p>Total Given {blessingsTotal ? blessingsTotal.toLocaleString() : ''}</p>
-          <p></p>
-        </div>
-        <div>
-          <h2>Latest Blessings</h2>
-          <table className="table table-striped">
-            <tbody>
-              {blessingsLatest
-                ? blessingsLatest.map((blessing, index) => {
-                    const { name, blessingNum } = blessing;
-                    return (
-                      <tr key={index}>
-                        <td>{name}</td>
-                        <td>{blessingNum ? blessingNum.toLocaleString() : ''}</td>
-                      </tr>
-                    );
-                  })
-                : ''}
-            </tbody>
-          </table>
+      <div className="container">
+        <div className="row justify-content-center">
+          <div className="col-md-6 text-center">
+            <button type="button" onClick={() => this.props.history.push('/')}>
+              Begin
+            </button>
+            <div>
+              <h2>Highest Blessings</h2>
+              <p>
+                {name} {blessingNum ? blessingNum.toLocaleString() : ''}
+              </p>
+              <p>Total Given {blessingsTotal ? blessingsTotal.toLocaleString() : ''}</p>
+              <p></p>
+            </div>
+            <div>
+              <h2>Latest Blessings</h2>
+              <table className="table table-striped">
+                <tbody>
+                  {blessingsLatest
+                    ? blessingsLatest.map((blessing, index) => {
+                        const { name, blessingNum } = blessing;
+                        return (
+                          <tr key={index}>
+                            <td>{name}</td>
+                            <td>{blessingNum ? blessingNum.toLocaleString() : ''}</td>
+                          </tr>
+                        );
+                      })
+                    : ''}
+                </tbody>
+              </table>
+            </div>
+          </div>
         </div>
       </div>
     );

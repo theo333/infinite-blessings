@@ -46,10 +46,10 @@ export default props => {
               />
             </div>
             <div className="form-group">
-              <label htmlFor="name">Comment</label>
+              <label htmlFor="comment">Comment</label>
               <textarea
                 className="form-control"
-                rows="6"
+                rows="4"
                 name="comment"
                 value={comment}
                 placeholder="question goes here"
