@@ -1,0 +1,72 @@
+/********* HOME PAGE *********/
+#home {
+  background-color: blue;
+  color: white;
+  height: 98%;
+  width: 98%;
+  margin: 1%;
+}
+
+#home h1,
+#home p {
+  letter-spacing: 0.3rem;
+}
+
+#home h1 {
+  font-size: 2.7rem;
+}
+
+#bless-you {
+  font-size: 10rem;
+}
+
+#click-continue {
+  margin-top: 15rem;
+}
+
+#click-continue a {
+  color: #fcaf00;
+  font-weight: 200;
+  letter-spacing: 0.2rem;
+  text-shadow: 1px 1px 5px white;
+}
+
+/********* SUBMIT BLESSINGS PAGE *********/
+#form-page {
+  font-size: 1.9rem;
+}
+
+#form-instructions {
+  font-size: 2.2rem;
+  font-weight: 600;
+  text-align: center;
+}
+
+.form-control {
+  background-color: #39383830 !important; /* #70707030 */
+  font-size: 1.7rem;
+}
+
+textarea {
+  resize: none;
+}
+
+.btn-ok {
+  color: black;
+  font-size: 2.2rem;
+  font-weight: 800;
+}
+
+label[for='name'] {
+  color: orange;
+  font-weight: 600;
+}
+
+label[for='comment'] {
+  color: #31d45d;
+  font-weight: 600;
+}
+
+.form-control::placeholder {
+  color: #fff;
+}

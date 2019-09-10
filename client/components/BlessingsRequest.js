@@ -37,13 +37,13 @@ export default props => {
   };
 
   return (
-    <div className="container">
-      <div className="row justify-content-center">
-        <div id="blessings-form" className="col-md-8">
-          <p>Leave a comment and write your name to receive blessings</p>
+    <div id="form-page" className="container h-100">
+      <div className="row align-items-center h-100">
+        <div id="blessings-form" className="mx-auto">
+          <p id="form-instructions">Leave a Comment and Write Your Name to Receive Blessings</p>
           <form onSubmit={handleSubmit}>
             <div className="form-group">
-              <label htmlFor="name">Name</label>
+              <label htmlFor="name">NAME: </label>
               <input
                 name="name"
                 value={name}
@@ -52,20 +52,22 @@ export default props => {
               />
             </div>
             <div className="form-group">
-              <label htmlFor="comment">Comment</label>
+              <label htmlFor="comment">COMMENT: </label>
               <textarea
                 className="form-control"
-                rows="4"
+                rows="3"
                 type="text"
                 name="comment"
                 value={comment}
-                placeholder={question}
+                placeholder="What's on your mind?" // {question}
                 onChange={e => setComment(e.target.value)}
               />
             </div>
-            <button type="submit" className="btn btn-primary">
-              Submit
-            </button>
+            <div className="text-center">
+              <button type="submit" className="btn btn-ok">
+                OK
+              </button>
+            </div>
           </form>
         </div>
       </div>
