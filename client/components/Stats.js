@@ -16,7 +16,7 @@ export default class Stats extends Component {
   }
 
   componentDidMount() {
-    this.getStats();
+    // this.getStats();
     this.getBlessings();
   }
 
@@ -53,11 +53,19 @@ export default class Stats extends Component {
           return highest;
         };
 
+        const blessingsTotal = blessings.reduce((total, current) => {
+          return total + current.blessingNum;
+        }, 0);
+
+        const blessingsQty = blessings.length;
+
         const blessingsLatest = num => {
           return blessings.slice(-num).reverse();
         };
         this.setState({
           blessingHighest: blessingHighest(),
+          blessingsTotal,
+          blessingsQty,
           blessingsLatest: blessingsLatest(10),
         });
       })
@@ -88,14 +96,14 @@ export default class Stats extends Component {
                 <tbody>
                   {blessingsLatest
                     ? blessingsLatest.map((blessing, index) => {
-                        const { name, blessingNum } = blessing;
-                        return (
-                          <tr key={index}>
-                            <td>{name}</td>
-                            <td>{blessingNum ? blessingNum.toLocaleString() : ''}</td>
-                          </tr>
-                        );
-                      })
+                      const { name, blessingNum } = blessing;
+                      return (
+                        <tr key={index}>
+                          <td>{name}</td>
+                          <td>{blessingNum ? blessingNum.toLocaleString() : ''}</td>
+                        </tr>
+                      );
+                    })
                     : ''}
                 </tbody>
               </table>
