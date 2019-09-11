@@ -13,6 +13,8 @@ const randNumGenerator = maxNum => {
   return Math.floor(Math.random() * maxNum);
 };
 
+// const skewedRandNumGenerator
+
 // BLESSINGS ROUTES
 app.get('/api/blessings', (req, res, next) => {
   Blessing.findAll()
@@ -22,7 +24,7 @@ app.get('/api/blessings', (req, res, next) => {
 
 app.post('/api/blessings', async (req, res, next) => {
   try {
-    const newBlessingNum = randNumGenerator(1000000);
+    const newBlessingNum = randNumGenerator(175000);
 
     // create new blessing
     const blessing = await Blessing.create({
