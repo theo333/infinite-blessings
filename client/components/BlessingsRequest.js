@@ -16,9 +16,9 @@ export default props => {
 
   useEffect(() => {
     // go to home page after 90 seconds
-    setTimeout(() => {
-      props.history.push('/');
-    }, 60000);
+    // setTimeout(() => {
+    //   props.history.push('/');
+    // }, 60000);
   });
 
   useEffect(() => {
