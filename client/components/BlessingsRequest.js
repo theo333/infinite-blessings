@@ -15,9 +15,13 @@ export default props => {
   };
 
   useEffect(() => {
-    // only for testing form
-    // console.log('name: ', name);
-    // console.log('comment: ', comment);
+    // go to home page after 60 seconds
+    setTimeout(() => {
+      props.history.push('/');
+    }, 60000);
+  });
+
+  useEffect(() => {
     getRandomQuestion();
   }, [question]);
 
@@ -45,9 +49,11 @@ export default props => {
             <div className="form-group">
               <label htmlFor="name">NAME: </label>
               <input
+                className="form-control"
                 name="name"
                 value={name}
-                className="form-control"
+                required
+                placeholder="max 20 characters"
                 onChange={e => setName(e.target.value)}
               />
             </div>
@@ -56,9 +62,9 @@ export default props => {
               <textarea
                 className="form-control"
                 rows="3"
-                type="text"
                 name="comment"
                 value={comment}
+                required
                 placeholder="What's on your mind?" // {question}
                 onChange={e => setComment(e.target.value)}
               />

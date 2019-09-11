@@ -16,11 +16,16 @@ const Blessing = conn.define('blessing', {
     allowNull: false,
     validate: {
       notEmpty: true,
-      len: [0, 15],
+      len: [0, 20],
     },
   },
   comment: {
     type: STRING,
+    allowNull: false,
+    validate: {
+      notEmpty: true,
+      len: [0, 220],
+    },
   },
   blessingNum: {
     type: INTEGER,
@@ -54,7 +59,7 @@ const Stat = conn.define('stat', {
   },
 });
 
-const mapSeed = (data, model) => Promise.all(data.map(item => model.create(item)));
+// const mapSeed = (data, model) => Promise.all(data.map(item => model.create(item)));
 
 const syncAndSeed = async () => {
   await conn.sync({ force: false });
@@ -71,31 +76,31 @@ const syncAndSeed = async () => {
 
   // // console.log('joe', susan.get());
 
-  const questions = [
-    { name: 'Question 1' },
-    { name: 'Question 2' },
-    { name: 'Question 3' },
-    { name: 'Question 4' },
-  ];
+  // const questions = [
+  //   { name: 'Question 1' },
+  //   { name: 'Question 2' },
+  //   { name: 'Question 3' },
+  //   { name: 'Question 4' },
+  // ];
 
-  const [question1, question2, question3, question4] = await mapSeed(questions, Question);
+  // const [question1, question2, question3, question4] = await mapSeed(questions, Question);
 
-  console.log('question1', question1.get());
+  // console.log('question1', question1.get());
 
-  return {
-    //   blessings: {
-    //     joe,
-    //     susan,
-    //     lisa,
-    //     charlie,
-    //   },
-    questions: {
-      question1,
-      question2,
-      question3,
-      question4,
-    },
-  };
+  // return {
+  //   //   blessings: {
+  //   //     joe,
+  //   //     susan,
+  //   //     lisa,
+  //   //     charlie,
+  //   //   },
+  //   questions: {
+  //     question1,
+  //     question2,
+  //     question3,
+  //     question4,
+  //   },
+  // };
 };
 
 module.exports = {

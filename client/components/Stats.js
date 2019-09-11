@@ -1,7 +1,6 @@
 /* eslint-disable indent */
 /* eslint-disable react/no-array-index-key */
 import React, { Component } from 'react';
-import Link from 'react-router-dom';
 import axios from 'axios';
 
 export default class Stats extends Component {
@@ -55,9 +54,9 @@ export default class Stats extends Component {
       })
       .then(() => {
         // go to home page after 60 seconds
-        // setTimeout(() => {
-        //   this.props.history.push('/');
-        // }, 60000);
+        setTimeout(() => {
+          this.props.history.push('/');
+        }, 60000);
       })
       .catch(err => console.log(err));
   }
@@ -87,7 +86,7 @@ export default class Stats extends Component {
             <div className="col-md-6 text-center">
               <div>
                 <h2>LATEST BLESSINGS</h2>
-                <table className="table col-sm-8 offset-sm-2">
+                <table className="table col-sm-9 offset-sm-2">
                   <tbody>
                     {blessingsLatest
                       ? blessingsLatest.map((blessing, index) => {
