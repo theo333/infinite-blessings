@@ -102,6 +102,17 @@ label[for='comment'] {
   font-size: 4rem;
 }
 
+#blessing-page button {
+  background-color: yellow;
+  color: blue;
+  border: #b4b4b4 solid 1px;
+}
+
+#blessing-page button:hover {
+  color: blue;
+  background-color: #e86321;
+}
+
 /********* STATS PAGE *********/
 #stats-page {
   color: white;
@@ -124,16 +135,20 @@ label[for='comment'] {
   margin-left: 2rem;
 }
 
-#stats-page button {
+#stats-page button,
+#blessing-page button {
   margin-bottom: 4rem;
   margin-top: 1rem;
   font-size: 2rem;
-  background-color: yellow;
-  color: blue;
 }
 
 #stats-page button:hover {
   background-color: white;
+}
+
+#stats-page button {
+  background-color: yellow;
+  color: blue;
 }
 
 .table {

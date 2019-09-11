@@ -26,7 +26,7 @@ export default class BlessingsNum extends Component {
       .then(() => {
         setTimeout(() => {
           this.props.history.push('/stats');
-        }, 6000);
+        }, 20000);
       })
       .catch(err => console.log(err));
   }
@@ -45,6 +45,9 @@ export default class BlessingsNum extends Component {
             </p>
             <p className="bless-num">{blessingNum ? blessingNum.toLocaleString() : ''}</p>
             <p className="bless-blessings">BLESSINGS</p>
+            <button type="button" className="btn" onClick={() => this.props.history.push('/stats')}>
+              THANK YOU! =&gt;
+            </button>
           </div>
         </div>
       </div>
