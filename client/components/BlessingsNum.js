@@ -34,19 +34,6 @@ export default class BlessingsNum extends Component {
   render() {
     const { name, blessingNum } = this.state.latestBlessing;
     return (
-      // <div className="container d-flex h-100">
-      //   <div className="row justify-content-center align-self-center">
-      //     {/* <div className="text-center"> */}
-      //     <p>
-      //       CONGRATULATIONS {name}!!!
-      //         <br />
-      //       YOU RECEIVED <br />
-      //       {blessingNum ? blessingNum.toLocaleString() : ''} <br />
-      //       BLESSINGS
-      //       </p>
-      //     {/* </div> */}
-      //   </div>
-      // </div>
       <div id="blessing-page" className="container h-100">
         <div className="row align-items-center h-100">
           <div className="mx-auto text-center">

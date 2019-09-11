@@ -1,10 +1,14 @@
 /********* HOME PAGE *********/
-#home {
+#home,
+#stats-page {
   background-color: blue;
-  color: white;
   height: 98%;
   width: 98%;
   margin: 1%;
+}
+
+#home {
+  color: white;
 }
 
 #home h1,
@@ -30,6 +34,11 @@
   font-weight: 400;
   letter-spacing: 0.2rem;
   /* text-shadow: 1px 1px 5px white; */
+}
+
+#click-continue a:hover {
+  text-decoration: none;
+  color: white;
 }
 
 /********* SUBMIT BLESSINGS PAGE *********/
@@ -91,4 +100,47 @@ label[for='comment'] {
 
 .bless-blessings {
   font-size: 4rem;
+}
+
+/********* STATS PAGE *********/
+#stats-page {
+  color: white;
+  letter-spacing: 0.15rem;
+}
+
+#stats-page h2 {
+  font-size: 2.2rem;
+  color: yellow;
+  margin-bottom: 1.2rem;
+  margin-top: 1.3rem;
+}
+
+#stats-page p {
+  font-size: 2rem;
+  margin-bottom: 4rem;
+}
+
+#stats-page p span {
+  margin-left: 2rem;
+}
+
+#stats-page button {
+  margin-bottom: 4rem;
+  margin-top: 1rem;
+  font-size: 2rem;
+  background-color: yellow;
+  color: blue;
+}
+
+#stats-page button:hover {
+  background-color: white;
+}
+
+.table {
+  color: white;
+  font-size: 1.2rem;
+}
+
+.table td {
+  border: none;
 }
