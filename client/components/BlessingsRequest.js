@@ -15,10 +15,10 @@ export default props => {
   };
 
   useEffect(() => {
-    // go to home page after 60 seconds
+    // go to home page after 90 seconds
     setTimeout(() => {
       props.history.push('/');
-    }, 60000);
+    }, 90000);
   });
 
   useEffect(() => {
@@ -44,7 +44,7 @@ export default props => {
     <div id="form-page" className="container h-100">
       <div className="row align-items-center h-100">
         <div id="blessings-form" className="mx-auto">
-          <p id="form-instructions">Leave a Comment and Write Your Name to Receive Blessings</p>
+          <p id="form-instructions">Write Your Name and Leave a Comment to Receive Blessings</p>
           <form onSubmit={handleSubmit}>
             <div className="form-group">
               <label htmlFor="name">NAME: </label>
