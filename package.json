@@ -5,7 +5,7 @@
   "main": "db.js",
   "dependencies": {
     "axios": "^0.19.0",
-    "express": "^4.16.4",
+    "express": "^4.17.3",
     "morgan": "^1.9.1",
     "pg": "^7.10.0",
     "react": "^16.8.3",
